@@ -33,7 +33,6 @@ public class HamburgerButtonDisappear : MonoBehaviour
     {
         image = GetComponent<Image>();
         uiHandler = GetComponent<UIHandler>();
-        text = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void HamburgerButtonPressed()
@@ -44,8 +43,6 @@ public class HamburgerButtonDisappear : MonoBehaviour
             Color c = image.color;
              c.a = 1;
             image.color = c;
-
-            text.color = new Color(0,0,0,1);
 
             faded = false;
             justClicked = true;
@@ -67,16 +64,13 @@ public class HamburgerButtonDisappear : MonoBehaviour
     IEnumerator FadeOut()
     {
         Color c = image.color;
-        Color c2 = text.color;
         float time = 0f;
         while (time < duration)
         {
             time += Time.deltaTime;
             c.a = 1 - (time / duration);
-            c2.a = 1 - (time / duration);
             yield return null;
             image.color = c;
-            text.color = c2;
         }
     }
 
